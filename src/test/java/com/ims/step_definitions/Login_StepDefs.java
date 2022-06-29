@@ -1,6 +1,7 @@
 package com.ims.step_definitions;
 
 import com.ims.pages.LoginPage;
+import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.ConfigurationReader;
 import com.ims.utilities.Driver;
 import io.cucumber.java.en.And;
@@ -23,10 +24,12 @@ public class Login_StepDefs {
     public void i_am_on_the_ims_login_page() {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
     }
+
+    @When("I send a valid email to the email field")
     public void i_send_a_valid_email_to_the_email_field() {
         loginPage.loginEmail();
-
     }
+    @And("I send a valid password to the password field")
     public void i_send_on_password_field(){
         loginPage.loginPassword();
     }
@@ -35,6 +38,7 @@ public class Login_StepDefs {
         loginPage.verifyLoggedIn();
     }
 
+    @When("I send an invalid email to the email field")
     public void iSendAnInvalidEmailToTheEmailField() {
         loginPage.loginIncorrectEmail();
     }
@@ -48,6 +52,7 @@ public class Login_StepDefs {
 
     @Then("I should get the following error {string}")
     public void iShouldGetTheFollowingError(String expectedError) {
+        BrowserUtils.sleep(5);
         Assert.assertEquals(expectedError, loginPage.actualError());
     }
 }

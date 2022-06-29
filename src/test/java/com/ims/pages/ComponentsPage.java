@@ -67,7 +67,7 @@ public class ComponentsPage extends BasePage{
     }
 
     public void vendorShouldBeEmpty(){
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(3);
         selectVendor.click();
         BrowserUtils.sleep(3);
         for (int i = 10; i < dropdownList.size(); i++) {
@@ -78,23 +78,26 @@ public class ComponentsPage extends BasePage{
     public void createNewComponent(){
         List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
 
+        BrowserUtils.sleep(2);
         inputFields.get(0).sendKeys("Automated Component");
+        BrowserUtils.sleep(1);
         inputFields.get(1).sendKeys("PN-E66");
+        BrowserUtils.sleep(1);
         inputFields.get(2).sendKeys("RN-E66");
 
         List <WebElement> selectFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "select");
 
         BrowserUtils.sleep(2);
         Select selectCustomer = new Select(selectFields.get(0));
-        selectCustomer.selectByIndex(3);
+        selectCustomer.selectByIndex(1);
 
-        BrowserUtils.sleep(2);
-        Select selectVendor = new Select(selectFields.get(1));
-        selectVendor.selectByIndex(1);
-
-        BrowserUtils.sleep(2);
-        Select selectProduct = new Select(selectFields.get(2));
-        selectProduct.selectByIndex(1);
+//        BrowserUtils.sleep(2);
+//        Select selectVendor = new Select(selectFields.get(1));
+//        selectVendor.selectByIndex(2);
+//
+//        BrowserUtils.sleep(2);
+//        Select selectProduct = new Select(selectFields.get(2));
+//        selectProduct.selectByIndex(1);
 
 
     }

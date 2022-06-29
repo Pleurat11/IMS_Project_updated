@@ -28,6 +28,7 @@ public class VendorsPage extends BasePage{
     }
 
     public void createNewVendor(){
+        BrowserUtils.sleep(3);
         List<WebElement> vendorName = JavascriptShadowRoot.jsShadowRootList("ipd-ims-vendor-editor-component", "input");
         BrowserUtils.sleep(1);
 
@@ -41,34 +42,7 @@ public class VendorsPage extends BasePage{
 
         Select select = new Select(selectCustomer);
         BrowserUtils.sleep(1);
-        select.selectByIndex(4);
+        select.selectByIndex(1);
     }
 
-    @Test
-    public void createVendor() {
-        vendorsModule.click();
-
-        for (int i = 1; i <53; i++) {
-
-            LocationsPage locationsPage = new LocationsPage();
-            locationsPage.newLocation.click();
-
-            BrowserUtils.sleep(3);
-
-            List<WebElement> vendorName = JavascriptShadowRoot.jsShadowRootList("ipd-ims-vendor-editor-component", "input");
-            BrowserUtils.sleep(1);
-
-            vendorName.get(0).sendKeys("Vendor Test P " +i);
-
-            BrowserUtils.sleep(2);
-            vendorName.get(1).click();
-
-            BrowserUtils.sleep(2);
-//            WebElement selectCustomer = JavascriptShadowRoot.jsShadowRoot("ipd-ims-vendor-editor-component", "select");
-//
-//            Select select = new Select(selectCustomer);
-//            BrowserUtils.sleep(1);
-//            select.selectByIndex(4);
-        }
-    }
 }

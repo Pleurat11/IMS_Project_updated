@@ -61,7 +61,7 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[.='Vendors']")
     public WebElement vendorsModule;
 
-    @FindBy(xpath = "//a[.='Work Orders']")
+    @FindBy(xpath = "//a[.='Work Order']")
     public WebElement workOrdersModule;
 
     @FindBy(xpath = "//a[.='Assemblies']")

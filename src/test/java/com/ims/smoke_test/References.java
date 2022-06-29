@@ -32,7 +32,7 @@ public class References extends BasePage {
 
         descriptionField.sendKeys("Location Description");
 
-//        saveButton.click();
+        saveButton.click();
         BrowserUtils.sleep(3);
     }
 
@@ -48,7 +48,7 @@ public class References extends BasePage {
 
         vendorName.get(0).sendKeys("Vendor Test");
 
-        //saveButton.click();
+        saveButton.click();
     }
 
     @Test()
@@ -68,7 +68,11 @@ public class References extends BasePage {
         inputFields.get(1).sendKeys("23");
 
         saveButton.click();
-        BrowserUtils.sleep(4);
+        BrowserUtils.sleep(10);
+
+        inputFields.get(4).click();
+
+        BrowserUtils.sleep(5);
 
         WebElement addComponentButton = Driver.getDriver().findElement(By.xpath("//button[.='Add Component']"));
         addComponentButton.click();
@@ -83,11 +87,5 @@ public class References extends BasePage {
         addComponentButtons.get(3).click();
     }
 
-    @Test
-    public void addComponentsUat(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
-
-    }
 
 }

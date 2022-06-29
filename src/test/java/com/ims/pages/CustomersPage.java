@@ -19,7 +19,7 @@ public class CustomersPage extends BasePage {
     @FindBy(xpath = "//ipd-ims-customer-editor-component")
     public WebElement rootHost;
 
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-light']")
+    @FindBy(xpath = "//button[.='New']")
     public WebElement newBttn;
 
     @FindBy(xpath = "//div[@class='toast-header text-white bg-success']")
@@ -74,7 +74,7 @@ public class CustomersPage extends BasePage {
 
         customerField.sendKeys("Automated customer");
         inputFields.get(1).clear();
-        inputFields.get(1).sendKeys();
+        inputFields.get(1).sendKeys("85");
 
 
     }

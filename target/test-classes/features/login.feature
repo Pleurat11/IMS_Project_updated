@@ -1,7 +1,5 @@
-@
 Feature: As a user I should be able to login to ims page
   @loginValidCredentials
-    @smoke
     Scenario: User logs in to ims page
     Given I am on the ims login page
     When I send a valid email to the email field

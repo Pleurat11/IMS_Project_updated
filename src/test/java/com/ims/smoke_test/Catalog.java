@@ -54,7 +54,7 @@ public class Catalog extends BasePage {
         wait.until(ExpectedConditions.titleIs("Portal"));
 
 
-        //catalogModule.click();
+        catalogModule.click();
         productsModule.click();
 
         newButton.click();
@@ -62,19 +62,24 @@ public class Catalog extends BasePage {
 
         List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "input");
 
+        BrowserUtils.sleep(2);
         inputFields.get(3).sendKeys("productName");
+        BrowserUtils.sleep(2);
         inputFields.get(4).sendKeys("pn-66");
+        BrowserUtils.sleep(2);
         inputFields.get(5).sendKeys("rn-66");
 
         Select selectCustomer = new Select(JavascriptShadowRoot.jsShadowRoot("ipd-ims-product-editor-component", "select"));
+        BrowserUtils.sleep(2);
         selectCustomer.selectByIndex(1);
 
+        BrowserUtils.sleep(2);
         WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-product-editor-component", "textarea");
         descriptionField.sendKeys("productDescription");
 
-//        saveButton.click();
+        saveButton.click();
 
-//        BrowserUtils.sleep(3);
+//        BrowserUtils.sleep(10);
 //
 //        WebElement addComponentButton = Driver.getDriver().findElement(By.xpath("//button[.='Add Component']"));
 //
@@ -84,7 +89,7 @@ public class Catalog extends BasePage {
 //
 //        WebElement partNumber = fieldsInput.get(0);
 //        WebElement lotSize = fieldsInput.get(1);
-//        partNumber.sendKeys("ASM-00119");
+//        partNumber.sendKeys("PRT-1");
 //        lotSize.sendKeys("10");
 //
 //        List<WebElement> addToList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "button");

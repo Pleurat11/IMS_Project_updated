@@ -2,16 +2,20 @@ package com.ims.step_definitions;
 
 import com.ims.pages.ComponentsPage;
 import com.ims.utilities.BrowserUtils;
+import com.ims.utilities.JavascriptShadowRoot;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.checkerframework.checker.units.qual.C;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
 public class Components_StepDefs {
+    List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
+
     ComponentsPage componentsPage = new ComponentsPage();
     public void i_click_on_components_module() {
         BrowserUtils.sleep(4);
@@ -39,13 +43,14 @@ public class Components_StepDefs {
         componentsPage.vendorsListAfterClickingCustomer();
     }
 
+    @When("I click on Select Customers dropdown on components page")
     public void iClickOnSelectCustomersDropdownOnComponentsPage() {
         BrowserUtils.sleep(5);
         componentsPage.componentsDropdown.click();
 
         componentsPage.clickOnACustomer();
     }
-
+    @When("A vendor was selected already")
     public void aVendorWasSelectedAlready() {
         componentsPage.clickOnAVendor();
     }
@@ -55,4 +60,39 @@ public class Components_StepDefs {
         componentsPage.vendorShouldBeEmpty();
 
     }
+
+    @And("I send {string} to component field")
+    public void iSendToComponentField(String componentName) {
+
+        inputFields.get(0).sendKeys(componentName);
+        BrowserUtils.sleep(1);
+
+
+        List <WebElement> selectFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "select");
+
+        BrowserUtils.sleep(2);
+        Select selectCustomer = new Select(selectFields.get(0));
+        selectCustomer.selectByIndex(1);
+    }
+
+    @And("I send {string} to part number field")
+    public void iSendToPartNumberField(String componentName) {
+        inputFields.get(1).sendKeys(componentName);
+    }
+
+    @And("I send {string} to revision nr field")
+    public void iSendToRevisionNrField(String revisionNr) {
+        inputFields.get(2).sendKeys(revisionNr);
+    }
+
+    @And("I select the first customer from the dropdown")
+    public void iSelectTheFirstCustomerFromTheDropdown() {
+     WebElement select = JavascriptShadowRoot.jsShadowRoot("ipd-ims-component-editor-component", "select");
+
+     Select select1 = new Select(select);
+
+     select1.selectByIndex(1);
+    }
+
+
 }

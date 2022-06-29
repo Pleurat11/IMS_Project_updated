@@ -11,6 +11,7 @@ import java.util.List;
 
 public class Vendors_StepDefs extends BasePage {
     VendorsPage vendorsPage = new VendorsPage();
+
     public void i_click_on_vendors_module() {
         BrowserUtils.sleep(3);
         vendorsPage.vendorsModule.click();

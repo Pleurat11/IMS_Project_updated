@@ -45,8 +45,9 @@ public class NewInventory_ComponentLots extends BasePage {
 //        SearchContextShadowRoot.shadowRoot(shadowHost);
 //        WebElement nextBttn = SearchContextShadowRoot.shadowRoot.findElement(By.xpath("//button[.='Next']"));
 
-        nextButton.get(0).click();
-        BrowserUtils.sleep(2);
-        nextButton.get(0).click();
+        BrowserUtils.sleep(4);
+        nextButton.get(7).click();
+
+
     }
 }

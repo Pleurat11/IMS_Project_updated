@@ -22,7 +22,7 @@ public class LocationsPage extends BasePage {
     @FindBy(xpath = "//button[.='Select Customer']")
     public WebElement selectCustomersDropdown;
 
-    @FindBy(xpath = "//a[.='Customer E3']")
+    @FindBy(xpath = "//a[.='Vertos']")
     public WebElement selectCustomer;
 
     @FindBy(xpath = "//a[@class='dropdown-item']")
@@ -90,56 +90,56 @@ public class LocationsPage extends BasePage {
     }
 
     public void createNewLocation() {
-        for (int i = 0; i <30; i++) {
+//        for (int i = 0; i <30; i++) {
 
             locationsModule.click();
-            newLocation.click();
+            newButton.click();
             BrowserUtils.sleep(2);
             WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
-            locationField.sendKeys("Location Test - P" + i);
+            locationField.sendKeys("Location Test - P");
             BrowserUtils.sleep(2);
             WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
 
-            descriptionField.sendKeys("This is automated locations description " + i);
+            descriptionField.sendKeys("This is automated locations description");
 
             BrowserUtils.sleep(2);
             WebElement selectCustomer = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "select");
 
             Select select = new Select(selectCustomer);
 
-        }
+//        }
     }
-    @Test
-    public void test(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        LoginPage loginPage = new LoginPage();
-        loginPage.loginEmail();
-        loginPage.loginPassword();
-
-        BrowserUtils.sleep(6);
-
-        for (int i = 17; i <=30; i++) {
-
-            locationsModule.click();
-            newLocation.click();
-            BrowserUtils.sleep(2);
-            WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
-            locationField.sendKeys("Location Test - P" + i);
-            BrowserUtils.sleep(2);
-            WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
-
-            descriptionField.sendKeys("This is automated locations description " + i);
-
-            BrowserUtils.sleep(2);
-            WebElement selectCustomer = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "select");
-
-            Select select = new Select(selectCustomer);
-            select.selectByIndex(1);
-
-            saveButton.click();
-
-            BrowserUtils.sleep(5);
-        }
-    }
+//    @Test
+//    public void test(){
+//        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+//        LoginPage loginPage = new LoginPage();
+//        loginPage.loginEmail();
+//        loginPage.loginPassword();
+//
+//        BrowserUtils.sleep(6);
+//
+//        for (int i = 17; i <=30; i++) {
+//
+//            locationsModule.click();
+//            newLocation.click();
+//            BrowserUtils.sleep(2);
+//            WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
+//            locationField.sendKeys("Location Test - P" + i);
+//            BrowserUtils.sleep(2);
+//            WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
+//
+//            descriptionField.sendKeys("This is automated locations description " + i);
+//
+//            BrowserUtils.sleep(2);
+//            WebElement selectCustomer = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "select");
+//
+//            Select select = new Select(selectCustomer);
+//            select.selectByIndex(1);
+//
+//            saveButton.click();
+//
+//            BrowserUtils.sleep(5);
+//        }
+//    }
 }
 

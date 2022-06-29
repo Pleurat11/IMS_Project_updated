@@ -25,8 +25,10 @@ public class CreateWorkOrder extends BasePage {
         loginPage.loginPassword();
         BrowserUtils.sleep(4);
         inventoryModule.click();
+        BrowserUtils.sleep(1);
         workOrdersModule.click();
         BrowserUtils.sleep(2);
+
 
 
         Driver.getDriver().findElement(By.xpath("(//button[@class='btn btn-sm btn-light '])[1]")).click();
@@ -36,7 +38,7 @@ public class CreateWorkOrder extends BasePage {
         BrowserUtils.sleep(2);
 
         Select select = new Select(customerSelect);
-        select.selectByIndex(4);
+        select.selectByIndex(1);
         BrowserUtils.sleep(4);
         List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-work-order-editor-component", "input");
 
@@ -44,7 +46,12 @@ public class CreateWorkOrder extends BasePage {
         BrowserUtils.sleep(1);
         inputFields.get(1).sendKeys("purchaseOrderNr");
 
-//        WebElement addAssemblyButton = Driver.getDriver().findElement(By.xpath("//button[contains(text(),'Add Assembly')]"));
+        saveButton.click();
+
+
+
+//        BrowserUtils.sleep(10);
+//        WebElement addAssemblyButton = Driver.getDriver().findElement(By.xpath("//button[.='Add Assembly']"));
 //        addAssemblyButton.click();
 
 

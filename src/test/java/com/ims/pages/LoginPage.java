@@ -59,7 +59,7 @@ public class LoginPage{
     }
 
     public String actualError(){
-        WebElement loginError = JavascriptShadowRoot.jsShadowRoot("login-component", "div > div");
+        WebElement loginError = JavascriptShadowRoot.jsShadowRoot("login-component", "div > div > div");
         wait.until(ExpectedConditions.visibilityOf(loginError));
 
         return loginError.getText();
