@@ -5,6 +5,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -117,6 +118,17 @@ public class CustomersPage extends BasePage {
             locationsPage.saveButton.click();
 
             BrowserUtils.sleep(5);
+        }
+    }
+
+    public void clickOnARow() {
+        BrowserUtils.sleep(6);
+        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-customer-browser-component", "table > tbody > tr");
+        try {
+            customersList.get(1).click();
+        }
+        catch (StaleElementReferenceException e){
+            e.printStackTrace();
         }
     }
 }

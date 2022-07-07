@@ -2,6 +2,7 @@ package com.ims.pages;
 
 import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.JavascriptShadowRoot;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -20,10 +21,10 @@ public class ComponentsPage extends BasePage{
     @FindBy(xpath = "//button[.='Select Vendor']")
     public WebElement selectVendor;
 
-    @FindBy(xpath = "//a[.='Vendors E1']")
+    @FindBy(xpath = "//a[.='Prent]")
     public WebElement vendorE1;
 
-    @FindBy(xpath = "//a[.='Customer E1']")
+    @FindBy(xpath = "//a[.='Vertos]")
     public WebElement customerE1;
 
 
@@ -100,5 +101,35 @@ public class ComponentsPage extends BasePage{
 //        selectProduct.selectByIndex(1);
 
 
+    }
+    public void clickOnARow() {
+        BrowserUtils.sleep(6);
+        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-browser-component", "table > tbody > tr");
+        try {
+            customersList.get(1).click();
+        }
+        catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void partNr(int index){
+        WebElement selectPartNr = JavascriptShadowRoot.jsShadowRoot("ipd-ims-customer-editor-component", "select");
+        Select select = new Select(selectPartNr);
+
+        select.selectByIndex(index);
+    }
+
+    public void revisionNr(int index){
+        List<WebElement> selectRevisionNr = JavascriptShadowRoot.jsShadowRootList("ipd-ims-customer-editor-component", "select");
+        Select select = new Select(selectRevisionNr.get(1));
+
+        select.selectByIndex(index);
+    }
+
+    public void clickAddComponent(){
+        List<WebElement> selectRevisionNr = JavascriptShadowRoot.jsShadowRootList("ipd-ims-customer-editor-component", "button");
+
+        selectRevisionNr.get(3).click();
     }
 }

@@ -1,6 +1,9 @@
 package com.ims.step_definitions;
 
 import com.ims.pages.SignUpPage;
+import com.ims.utilities.BrowserUtils;
+import com.ims.utilities.ConfigurationReader;
+import com.ims.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,6 +13,9 @@ public class SignUp_StepDefs {
     SignUpPage signUpPage = new SignUpPage();
     @When("I click on the Create Account button")
     public void iClickOnTheCreateAccountButton(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+
+        BrowserUtils.sleep(6);
         signUpPage.createAccountButton();
     }
 

@@ -14,24 +14,38 @@ public abstract class BasePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-    LoginPage loginPage = new LoginPage();
-    @Before
-    public  void beforeClass(){
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
-
-            loginPage.loginEmail();
-            loginPage.loginPassword();
-
-    }
+//    LoginPage loginPage = new LoginPage();
+//    @Before
+//    public  void beforeClass(){
+//        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+//
+//
+//            loginPage.loginEmail();
+//            loginPage.loginPassword();
+//
+//    }
 
     @FindBy(xpath = "//button[.='New']")
     public WebElement newButton;
 
+    @FindBy(xpath = "//button[.='Delete']")
+    public WebElement deleteButton;
     @FindBy(xpath = "//button[.='Save']")
     public WebElement saveButton;
     @FindBy(xpath = "(//button[@class='btn btn-sm btn-light'])[1]")
     public WebElement newLocation;
+
+    @FindBy(xpath = "//button[.='Reset filters']")
+    public WebElement resetFiltersButton;
+
+    @FindBy(xpath = "//a[.='Vertos']")
+    public WebElement selectCustomer;
+
+    @FindBy(xpath = "//button[.='Email']")
+    public WebElement emailButton;
+
+    @FindBy(xpath = "//a[.='Attachments']")
+    public WebElement attachmentsTab;
     @FindBy(xpath = "//a[.='Inventory']")
     public WebElement inventoryModule;
     @FindBy(xpath = "//a[.='Catalog']")
@@ -61,7 +75,7 @@ public abstract class BasePage {
     @FindBy(xpath = "//a[.='Vendors']")
     public WebElement vendorsModule;
 
-    @FindBy(xpath = "//a[.='Work Order']")
+    @FindBy(xpath = "//a[.='Work Orders']")
     public WebElement workOrdersModule;
 
     @FindBy(xpath = "//a[.='Assemblies']")

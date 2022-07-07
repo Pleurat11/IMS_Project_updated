@@ -19,7 +19,7 @@ public class SignUpPage {
     }
 
     WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-    List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("sign-component", "input");
+//    List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("sign-component", "input");
     Faker faker = new Faker();
 
     public void createAccountButton(){
@@ -34,27 +34,30 @@ public class SignUpPage {
         Assert.assertTrue(signUpText.isDisplayed());
     }
     public void nameField(){
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("signup-component", "input");
         BrowserUtils.sleep(1);
         inputFields.get(0).sendKeys(faker.name().firstName());
     }
     public void emailField(){
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("signup-component", "input");
         BrowserUtils.sleep(1);
         inputFields.get(1).sendKeys(faker.internet().emailAddress());
     }
     public void password(){
-
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("signup-component", "input");
             inputFields.get(2).sendKeys("password123");
             BrowserUtils.sleep(1);
             inputFields.get(3).sendKeys("password123");
     }
     public void checkCheckbox(){
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("signup-component", "input");
         BrowserUtils.sleep(2);
         inputFields.get(4).click();
     }
 
     public void submitButton(){
         BrowserUtils.sleep(1);
-        List<WebElement> buttons = JavascriptShadowRoot.jsShadowRootList("login-component", "button");
+        List<WebElement> buttons = JavascriptShadowRoot.jsShadowRootList("signup-component", "button");
         buttons.get(1).click();
     }
 

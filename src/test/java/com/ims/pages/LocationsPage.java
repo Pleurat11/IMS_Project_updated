@@ -31,6 +31,9 @@ public class LocationsPage extends BasePage {
     @FindBy(xpath = "ipd-ims-location-editor-component")
     public WebElement shadowRoot;
 
+    @FindBy(xpath = "//button[.='Delete']")
+    public WebElement deleteButton;
+
     public List<String> seeLocationsAsGrid() {
 
         List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "thead > tr");
@@ -57,8 +60,11 @@ public class LocationsPage extends BasePage {
     }
 
     public int locationsResults() {
+        BrowserUtils.sleep(4);
         List<WebElement> myList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "tbody > tr");
-        wait.until(ExpectedConditions.visibilityOf(myList.get(1)));
+        for (int i = 0; i < myList.size(); i++) {
+
+        }
         return myList.size();
     }
 
@@ -68,25 +74,14 @@ public class LocationsPage extends BasePage {
     }
 
     public void clickOnARow() {
+        BrowserUtils.sleep(6);
         List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "table > tbody > tr");
-
-        for (int i = 0; i <locationsList.size()-1; i++) {
-            try {
-                locationsList.get(1).click();
-            }
-            catch (StaleElementReferenceException e){
-                e.printStackTrace();
-            }
+        try {
+            locationsList.get(1).click();
         }
-    }
-    public void existingLocationData(){
-
-            SearchContextShadowRoot.shadowRoot(shadowRoot);
-            WebElement location = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "label");
-
-        System.out.println(location.getText());
-
-
+        catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
     }
 
     public void createNewLocation() {

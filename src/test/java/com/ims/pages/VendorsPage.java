@@ -3,6 +3,7 @@ package com.ims.pages;
 import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.JavascriptShadowRoot;
 import org.junit.Test;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -23,6 +24,7 @@ public class VendorsPage extends BasePage{
     }
 
     public int vendorsResult(){
+        BrowserUtils.sleep(4);
         List<WebElement> myList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-vendor-browser-component", "tbody > tr");
         return myList.size();
     }
@@ -43,6 +45,17 @@ public class VendorsPage extends BasePage{
         Select select = new Select(selectCustomer);
         BrowserUtils.sleep(1);
         select.selectByIndex(1);
+    }
+
+    public void clickOnARow() {
+        BrowserUtils.sleep(6);
+        List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-vendor-browser-component", "table > tbody > tr");
+        try {
+            locationsList.get(1).click();
+        }
+        catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
     }
 
 }

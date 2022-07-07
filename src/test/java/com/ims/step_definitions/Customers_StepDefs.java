@@ -3,17 +3,24 @@ package com.ims.step_definitions;
 import com.ims.pages.CustomersPage;
 import com.ims.pages.LoginPage;
 import com.ims.utilities.BrowserUtils;
+import com.ims.utilities.Driver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Customers_StepDefs {
     LoginPage loginPage  = new LoginPage();
     CustomersPage customersPage = new CustomersPage();
+
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+
     @Given("I am on the dashboard page")
     public void i_am_on_the_dashboard_page() {
         loginPage.verifyLoggedIn();
@@ -52,11 +59,22 @@ public class Customers_StepDefs {
 
     @Then("the results should be blank")
     public void theResultsShouldBeBlank() {
-
+        //TODO
     }
 
     @When("I click on the customers module")
     public void iClickOnTheCustomersModule() {
         customersPage.customersModule.click();
+    }
+
+    @And("I click on one of the rows on customers page")
+    public void iClickOnOneOfTheRowsOnCustomersPage() {
+        customersPage.clickOnARow();
+    }
+
+    @Then("the customers editor should be opened")
+    public void theCustomersEditorShouldBeOpened() {
+        wait.until(ExpectedConditions.visibilityOf(customersPage.deleteButton));
+        Assert.assertTrue(customersPage.deleteButton.isDisplayed());
     }
 }

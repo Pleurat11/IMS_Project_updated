@@ -6,10 +6,15 @@ import com.ims.utilities.JavascriptShadowRoot;
 import io.cucumber.java.en.And;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AssembliesPage extends BasePage{
@@ -71,5 +76,28 @@ public class AssembliesPage extends BasePage{
     public void verifyAllocationSuccessful(){
         BrowserUtils.sleep(5);
         Assert.assertTrue(toastMessage.isDisplayed());
+    }
+
+    public List<String> workOrderColumns(){
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOf(resetFiltersButton));
+        List<String> newList = new ArrayList<>();
+        List<WebElement> vendorsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-assembly-browser-component", "thead > tr > th");
+
+        for (int i = 0; i <vendorsList.size()-1; i++) {
+            newList.add(vendorsList.get(i).getText());
+        }
+        return newList;
+    }
+
+    public void clickOnARow() {
+        BrowserUtils.sleep(6);
+        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-assembly-browser-component", "table > tbody > tr");
+        try {
+            customersList.get(1).click();
+        }
+        catch (StaleElementReferenceException e){
+            e.printStackTrace();
+        }
     }
 }

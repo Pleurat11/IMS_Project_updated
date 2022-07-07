@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/ims/step_definitions",
-        tags = "@createProduct",
+        tags = "@browseAssemblies",
         dryRun = false
 
 )

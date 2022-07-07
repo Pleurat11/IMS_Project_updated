@@ -5,6 +5,9 @@ import com.ims.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
+
+import java.util.List;
 
 public class Assemblies_StepDefs {
     AssembliesPage assembliesPage = new AssembliesPage();
@@ -58,5 +61,20 @@ public class Assemblies_StepDefs {
     public void theComponentLotWillBeAllocatedSuccessfully() {
         BrowserUtils.sleep(4);
         assembliesPage.verifyAllocationSuccessful();
+    }
+
+    @Then("I should see the assemblies listed as grid with the following columns:")
+    public void iShouldSeeTheAssembliesListedAsGridWithTheFollowingColumns(List<String> expectedColumns) {
+        Assert.assertEquals(expectedColumns, assembliesPage.workOrderColumns());
+    }
+
+    @Then("the assembly editor should be opened")
+    public void theAssemblyEditorShouldBeOpened() {
+        Assert.assertTrue(assembliesPage.deleteButton.isDisplayed());
+    }
+
+    @And("I click on one of the rows on assemblies page")
+    public void iClickOnOneOfTheRowsOnAssembliesPage() {
+        assembliesPage.clickOnARow();
     }
 }

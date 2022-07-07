@@ -14,12 +14,12 @@ import org.openqa.selenium.TakesScreenshot;
 
 
 public class Hooks {
-    LoginPage loginPage = new LoginPage();
 
-    @Before
-    public void setUp() {
+
+    @BeforeAll
+    public static void before_or_after_all() {
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-
+        LoginPage loginPage = new LoginPage();
         loginPage.loginEmail();
         loginPage.loginPassword();
     }

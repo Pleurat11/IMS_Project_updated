@@ -4,13 +4,17 @@ import com.ims.pages.BasePage;
 import com.ims.pages.CustomerReportsPage;
 import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.Driver;
+import com.ims.utilities.JavascriptShadowRoot;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class CustomerReport_StepDefs extends BasePage {
     CustomerReportsPage reportsPage = new CustomerReportsPage();
@@ -46,5 +50,26 @@ public class CustomerReport_StepDefs extends BasePage {
     public void a_new_customer_report_entry_will_be_created() {
         BrowserUtils.sleep(5);
         reportsPage.verifyReportCreated();
+    }
+
+    @And("I select a customer from the list")
+    public void iSelectACustomerFromTheList() {
+        reportsPage.selectCustomer();
+    }
+
+    @And("I click on the Email button at the top")
+    public void iClickOnTheEmailButtonAtTheTop() {
+        reportsPage.clickEmailButton();
+    }
+
+
+    @And("I input a valid email to the email field")
+    public void iInputAValidEmailToTheEmailField() {
+        reportsPage.sendEmail();
+    }
+
+    @Then("the email should be sent successfully")
+    public void theEmailShouldBeSentSuccessfully() {
+        //TODO after QA UP
     }
 }

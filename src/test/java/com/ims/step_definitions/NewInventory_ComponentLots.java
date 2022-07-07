@@ -4,8 +4,7 @@ import com.ims.pages.BasePage;
 import com.ims.pages.LoginPage;
 import com.ims.utilities.*;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -36,18 +35,36 @@ public class NewInventory_ComponentLots extends BasePage {
         Select selectCustomer = new Select(selectClass.get(0));
         selectCustomer.selectByVisibleText("Vertos");
 
-        List<WebElement> nextButton = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-lot-browser-component", "div > button");
+        WebElement nextButton = JavascriptShadowRoot.jsShadowRoot("ipd-ims-component-lot-browser-component", "div.d-grid.gap-2.d-md-flex.justify-content-md-end");
 
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+
         Actions actions = new Actions(Driver.getDriver());
+
+
+            BrowserUtils.sleep(6);
+            nextButton.click();
+
+            BrowserUtils.sleep(7);
+
+        List<WebElement> selectClass2 = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-lot-browser-component", "select");
         BrowserUtils.sleep(2);
-//        WebElement shadowHost = Driver.getDriver().findElement(By.xpath("ipd-ims-component-lot-browser-component"));
-//        SearchContextShadowRoot.shadowRoot(shadowHost);
-//        WebElement nextBttn = SearchContextShadowRoot.shadowRoot.findElement(By.xpath("//button[.='Next']"));
+
+        Select selectCustomer2 = new Select(selectClass2.get(0));
+        selectCustomer2.selectByIndex(1);
 
         BrowserUtils.sleep(4);
-        nextButton.get(7).click();
 
+        WebElement nextBttn = JavascriptShadowRoot.jsShadowRoot("ipd-ims-component-lot-browser-component", "button.btn.btn-primary");
+        wait.until(ExpectedConditions.elementToBeClickable(nextBttn));
 
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].click();", nextBttn);
+    }
+
+    public static void tabKeys(){
+        for (int i = 0; i <5; i++) {
+            Keys.TAB.toString();
+        }
     }
 }

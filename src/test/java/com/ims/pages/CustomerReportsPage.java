@@ -1,5 +1,6 @@
 package com.ims.pages;
 
+import com.ims.utilities.ConfigurationReader;
 import com.ims.utilities.Driver;
 import com.ims.utilities.JavascriptShadowRoot;
 import com.ims.utilities.SearchContextShadowRoot;
@@ -8,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -36,4 +38,21 @@ public class CustomerReportsPage extends BasePage{
         List<WebElement> form = JavascriptShadowRoot.jsShadowRootList("ipd-ims-report-browser-component", "h5");
         Assert.assertTrue(form.get(10).isDisplayed());
     }
+
+    public void selectCustomer(){
+        WebElement customer1 = JavascriptShadowRoot.jsShadowRoot("ipd-ims-report-browser-component", "tr > td > input");
+
+        customer1.click();
+    }
+
+    public void clickEmailButton(){
+        emailButton.click();
+    }
+
+    public void sendEmail(){
+        WebElement emailField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-report-browser-component", "div > input");
+
+        emailField.sendKeys(ConfigurationReader.getProperty("email") + Keys.ENTER);
+    }
+
 }

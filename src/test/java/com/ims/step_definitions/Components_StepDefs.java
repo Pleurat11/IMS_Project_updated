@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 
 public class Components_StepDefs {
-    List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
 
     ComponentsPage componentsPage = new ComponentsPage();
     public void i_click_on_components_module() {
@@ -64,6 +63,8 @@ public class Components_StepDefs {
     @And("I send {string} to component field")
     public void iSendToComponentField(String componentName) {
 
+        List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
+
         inputFields.get(0).sendKeys(componentName);
         BrowserUtils.sleep(1);
 
@@ -77,11 +78,15 @@ public class Components_StepDefs {
 
     @And("I send {string} to part number field")
     public void iSendToPartNumberField(String componentName) {
+        List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
+
         inputFields.get(1).sendKeys(componentName);
     }
 
     @And("I send {string} to revision nr field")
     public void iSendToRevisionNrField(String revisionNr) {
+        List <WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-editor-component", "input");
+
         inputFields.get(2).sendKeys(revisionNr);
     }
 
@@ -95,4 +100,30 @@ public class Components_StepDefs {
     }
 
 
+    @And("I click on one of the rows on components page")
+    public void iClickOnOneOfTheRowsOnComponentsPage() {
+        componentsPage.clickOnARow();
+    }
+
+
+
+    @And("I click the add component button to add the component")
+    public void iClickTheAddComponentButtonToAddTheComponent() {
+        componentsPage.clickAddComponent();
+    }
+
+    @And("I select a part number from the part number dropdown")
+    public void iSelectAPartNumberFromThePartNumberDropdown() {
+        componentsPage.partNr(1);
+    }
+
+    @And("I select a revision number from the revision number dropdown")
+    public void iSelectARevisionNumberFromTheRevisionNumberDropdown() {
+        componentsPage.revisionNr(1);
+    }
+
+    @Then("the component should be added successfully")
+    public void theComponentShouldBeAddedSuccessfully() {
+        //TODO when QA up
+    }
 }

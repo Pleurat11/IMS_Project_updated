@@ -4,6 +4,7 @@ import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.Driver;
 import com.ims.utilities.JavascriptShadowRoot;
 import com.ims.utilities.SearchContextShadowRoot;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,6 +29,9 @@ public class ProductPage extends BasePage {
     @FindBy(xpath = "//button[.='Add Component']")
     public WebElement addComponentButton;
 
+    @FindBy(xpath = "//button[@class='btn btn-sm btn-light dropdown-toggle']")
+    public WebElement productDropdown;
+
     public List<String> actualProductsColumns(){
         List<String> newList = new ArrayList<>();
         List<WebElement> productsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-browser-component", "thead > tr > th");
@@ -50,11 +54,7 @@ public class ProductPage extends BasePage {
 
     }
     public void existingProductData(){
-        WebElement selectId = JavascriptShadowRoot.jsShadowRoot("ipd-ims-product-browser-component", "select");
-        SearchContextShadowRoot.shadowRoot(Driver.getDriver().findElement(By.xpath("ipd-ims-product-browser-component")));
-
-        WebElement customer = SearchContextShadowRoot.shadowRoot.findElement(By.id("f_name_0"));
-        System.out.println(customer.getText());
+        Assert.assertTrue(deleteButton.isDisplayed());
     }
 
     public void productEditorPage(){
@@ -63,29 +63,36 @@ public class ProductPage extends BasePage {
     public void inputFields(){
         List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "input");
 
-        inputFields.get(3).sendKeys("Product-20");
+        inputFields.get(3).sendKeys("Product-21");
         BrowserUtils.sleep(3);
-        inputFields.get(4).sendKeys("PN-20");
+        inputFields.get(4).sendKeys("PN-21");
         BrowserUtils.sleep(2);
-        inputFields.get(5).sendKeys("RN-20");
+        inputFields.get(5).sendKeys("RN-21");
 
         WebElement selectCustomer = JavascriptShadowRoot.jsShadowRoot("ipd-ims-product-editor-component", "select");
 
         Select select = new Select(selectCustomer);
         select.selectByIndex(1);
     }
-    List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "input");
 
     public void inputFieldsComponents(String partNr){
-
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "input");
         inputFields.get(0).sendKeys(partNr);
     }
     public void lotSize(int num){
+        List<WebElement> inputFields = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "input");
         inputFields.get(1).sendKeys(num + toString());
     }
     public void addToList(){
         List<WebElement> addToList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-editor-component", "button");
         addToList.get(8).click();
 
+    }
+
+    public void filterProductsByCustomer(){
+        BrowserUtils.sleep(3);
+        customerDropdown.click();
+        BrowserUtils.sleep(2);
+        selectCustomer.click();
     }
 }
