@@ -13,10 +13,11 @@ public class Shipment_StepDefs {
     ShipmentPage shipmentPage = new ShipmentPage();
 
     @When("I click on delivery module")
-    public void i_click_on_delivery_module(){
-        shipmentPage.deliveryModule.click();
+    public void i_click_on_delivery_module() {
+        if (!shipmentPage.shipmentsModule.isDisplayed()) {
+            shipmentPage.deliveryModule.click();
+        }
     }
-
     @And("I click on shipments module")
     public void iClickOnShipmentsModule() {
         shipmentPage.shipmentsModule.click();

@@ -9,7 +9,7 @@ Feature: As a user I want to create multiple components at once
     And I select the first customer from the dropdown
     And I send "<Component name>" to part number field
     And I send "<Revision number>" to revision nr field
-    And I click on the Save button
+#    And I click on the Save button
     Then A new component should be created successfully
     Examples:
     |Component name|Revision number|

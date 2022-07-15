@@ -1,6 +1,7 @@
 package com.ims.step_definitions;
 
 import com.ims.pages.FilesPage;
+import com.ims.utilities.BrowserUtils;
 import io.cucumber.java.en.And;
 
 public class FilesPackage_StepDefs {
@@ -8,6 +9,7 @@ public class FilesPackage_StepDefs {
 
     @And("user clicks on an existing component lot")
     public void userClicksOnAnExistingComponentLot(){
+        BrowserUtils.sleep(4);
         filesPage.existingComponentLots();
     }
 

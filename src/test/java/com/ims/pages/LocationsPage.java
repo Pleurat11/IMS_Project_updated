@@ -69,7 +69,8 @@ public class LocationsPage extends BasePage {
     }
 
 
-    public void selectCustomerE1() {
+    public void selectCustomer() {
+        wait.until(ExpectedConditions.visibilityOf(selectCustomer));
         selectCustomer.click();
     }
 
@@ -91,7 +92,7 @@ public class LocationsPage extends BasePage {
             newButton.click();
             BrowserUtils.sleep(2);
             WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
-            locationField.sendKeys("Location Test - P");
+            locationField.sendKeys("Warehouse");
             BrowserUtils.sleep(2);
             WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
 

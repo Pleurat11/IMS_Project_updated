@@ -1,5 +1,6 @@
 package com.ims.pages;
 
+import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.Driver;
 import com.ims.utilities.JavascriptShadowRoot;
 import org.openqa.selenium.WebElement;
@@ -17,7 +18,10 @@ public class FilesPage extends BasePage{
     public WebElement uploadButton;
 
     public void existingComponentLots(){
-        List<WebElement> componentLots = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-lot-browser-component", "tbody > tr");
-        componentLots.get(0).click();
+        BrowserUtils.sleep(3);
+        WebElement componentLots = JavascriptShadowRoot.jsShadowRoot("ipd-ims-component-lot-browser-component", "tbody > tr");
+        componentLots.click();
+
+
     }
 }

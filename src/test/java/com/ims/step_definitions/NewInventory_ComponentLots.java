@@ -62,9 +62,4 @@ public class NewInventory_ComponentLots extends BasePage {
         js.executeScript("arguments[0].click();", nextBttn);
     }
 
-    public static void tabKeys(){
-        for (int i = 0; i <5; i++) {
-            Keys.TAB.toString();
-        }
-    }
 }

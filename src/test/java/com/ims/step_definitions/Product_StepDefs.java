@@ -9,13 +9,18 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Product_StepDefs {
     ProductPage productPage =  new ProductPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
 
     @Then("I should be redirected to product editor page")
     public void iShouldBeRedirectedToProductEditorPage() {
@@ -34,7 +39,7 @@ public class Product_StepDefs {
 
     @When("I click on the add component button")
     public void iClickOnTheAddComponentButton() {
-        BrowserUtils.sleep(6);
+        wait.until(ExpectedConditions.elementToBeClickable(productPage.addComponentButton));
         productPage.addComponentButton.click();
     }
 
@@ -53,7 +58,7 @@ public class Product_StepDefs {
     }
     @And("I click on product module")
     public void i_click_on_product_module(){
-        BrowserUtils.sleep(3);
+        wait.until(ExpectedConditions.elementToBeClickable(productPage.productsModule));
         productPage.productsModule.click();
     }
 
@@ -65,10 +70,10 @@ public class Product_StepDefs {
 
     }
 
-    @Then("I should be able to see the results paginated {int} records at a time")
-    public void iShouldBeAbleToSeeTheResultsPaginatedRecordsAtATime(int expectedNr) {
+    @Then("I should be able to see products results paginated {int} or more records at a time")
+    public void iShouldBeAbleToSeeTheResultsPaginatedRecordsAtATime(int expectedNrOfResults) {
         BrowserUtils.sleep(4);
-        Assert.assertEquals(expectedNr, productPage.actualNumberOfResults());
+        Assert.assertTrue(expectedNrOfResults < productPage.actualNumberOfResults());
     }
 
     @And("I select a customer from the dropdown")
@@ -83,13 +88,13 @@ public class Product_StepDefs {
 
     @And("I click on a given row")
     public void iClickOnAGivenRow() {
-        BrowserUtils.sleep(3);
+        BrowserUtils.sleep(1);
         productPage.clickOnARow();
     }
 
     @Then("I should be able tp see the existing product data")
     public void iShouldBeAbleTpSeeTheExistingProductData() {
-        BrowserUtils.sleep(7);
+        wait.until(ExpectedConditions.visibilityOf(productPage.addComponentButton));
         productPage.existingProductData();
     }
 

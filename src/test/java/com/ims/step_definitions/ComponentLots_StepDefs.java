@@ -25,10 +25,10 @@ public class ComponentLots_StepDefs {
         Assert.assertEquals(expectedColumns, comPage.componentLotColumns());
     }
 
-    @Then("I should be able to see the results paginated {int}, records at a time")
+    @Then("I should be able to see component lots results paginated {int} or more records at a time")
     public void iShouldBeAbleToSeeTheResultsPaginatedRecordsAtATime(int expectedColumns) {
         BrowserUtils.sleep(3);
-        Assert.assertEquals(expectedColumns, comPage.actualColumns());
+        Assert.assertTrue(expectedColumns < comPage.actualColumns());
     }
 
     @And("I click the Awaiting customer disposition checkbox")
@@ -56,10 +56,11 @@ public class ComponentLots_StepDefs {
 
     @When("I click on inventory module")
     public void iClickOnInventoryModule() {
-        comPage.inventoryModule.click();
-        BrowserUtils.sleep(2);
+        if (!comPage.assembliesModule.isDisplayed()) {
+            comPage.inventoryModule.click();
+            BrowserUtils.sleep(2);
+        }
     }
-
     @And("I click on an existing component lot")
     public void iClickOnAnExistingComponentLot() {
         comPage.clickOnARow();

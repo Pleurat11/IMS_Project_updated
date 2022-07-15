@@ -31,10 +31,10 @@ public class Components_StepDefs {
         componentsPage.catalogModule.click();
     }
 
-    @Then("I should be able to see the results paginated, {int} records at a time")
+    @Then("I should be able to see component results paginated {int} or more records at a time")
     public void iShouldBeAbleToSeeTheResultsPaginatedRecordsAtATime(int numOfRecords) {
         BrowserUtils.sleep(5);
-        Assert.assertEquals(numOfRecords, componentsPage.numOfRecords());
+        Assert.assertTrue(numOfRecords < componentsPage.numOfRecords());
     }
 
     @And("After I select a customer, the dropdown will show vendors associated with that customer")

@@ -21,10 +21,10 @@ public class ComponentsPage extends BasePage{
     @FindBy(xpath = "//button[.='Select Vendor']")
     public WebElement selectVendor;
 
-    @FindBy(xpath = "//a[.='Prent]")
+    @FindBy(xpath = "//a[.='Prent']")
     public WebElement vendorE1;
 
-    @FindBy(xpath = "//a[.='Vertos]")
+    @FindBy(xpath = "//a[.='Vertos']")
     public WebElement customerE1;
 
 

@@ -14,17 +14,6 @@ public abstract class BasePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
-//    LoginPage loginPage = new LoginPage();
-//    @Before
-//    public  void beforeClass(){
-//        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-//
-//
-//            loginPage.loginEmail();
-//            loginPage.loginPassword();
-//
-//    }
-
     @FindBy(xpath = "//button[.='New']")
     public WebElement newButton;
 
@@ -89,5 +78,8 @@ public abstract class BasePage {
 
     @FindBy(xpath = "//a[.='Customer Inventory']")
     public WebElement customerInventory;
+
+    @FindBy(xpath = "//a[.='References']")
+    public WebElement referencesModule;
 
 }

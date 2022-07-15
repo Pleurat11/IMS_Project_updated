@@ -1,5 +1,6 @@
 package com.ims.step_definitions;
 
+import com.google.common.base.Verify;
 import com.ims.pages.LocationsPage;
 import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.Driver;
@@ -23,22 +24,16 @@ public class Locations_StepDefs{
         Assert.assertEquals(expectedList, locationsPage.seeLocationsAsGrid());
     }
 
-    @Then("I should see the results paginated {int} records at a time")
-    public void iShouldSeeTheResultsPaginatedRecordsAtATime(int numOfResults) {
-        wait.until(ExpectedConditions.visibilityOf(locationsPage.selectCustomersDropdown));
-        Assert.assertEquals(numOfResults, locationsPage.locationsResults());
-    }
-
     @And("I click on Select Customers dropdown")
     public void iClickOnSelectCustomersDropdown() {
-        wait.until(ExpectedConditions.elementToBeClickable(locationsPage.selectCustomersDropdown));
+        BrowserUtils.sleep(2);
         locationsPage.selectCustomersDropdown.click();
     }
 
     @Then("I should be able to select a customer and filter locations")
     public void iShouldBeAbleToSelectACustomerAndFilterLocations() {
-        BrowserUtils.sleep(1);
-        locationsPage.selectCustomerE1();
+        BrowserUtils.sleep(2);
+        locationsPage.selectCustomer();
     }
 
 
@@ -50,7 +45,7 @@ public class Locations_StepDefs{
 
     @When("I click on locations module")
     public void iClickOnLocationsModule() {
-        BrowserUtils.sleep(3);
+        wait.until(ExpectedConditions.visibilityOf(locationsPage.locationsModule));
         locationsPage.locationsModule.click();
     }
 
@@ -58,5 +53,21 @@ public class Locations_StepDefs{
     public void theLocationsEditorShouldBeOpened() {
         wait.until(ExpectedConditions.visibilityOf(locationsPage.deleteButton));
         Assert.assertTrue(locationsPage.deleteButton.isDisplayed());
+    }
+
+    @Then("I should see the results paginated {int} or more records at a time")
+    public void iShouldSeeTheResultsPaginatedOrMoreRecordsAtATime(int numOfResults) {
+        wait.until(ExpectedConditions.visibilityOf(locationsPage.selectCustomersDropdown));
+        Assert.assertTrue(locationsPage.locationsResults() > numOfResults);
+
+
+    }
+
+    @When("I click on references module")
+    public void iClickOnReferencesModule() {
+        if (!locationsPage.locationsModule.isDisplayed()){
+            locationsPage.referencesModule.click();
+        }
+
     }
 }

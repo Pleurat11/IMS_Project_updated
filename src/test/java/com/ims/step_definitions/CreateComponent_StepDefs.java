@@ -28,9 +28,9 @@ public class CreateComponent_StepDefs {
 
     @When("I click on catalogs module")
     public void iClickOnCatalogsModule() {
-
-        catalog.catalogModule.click();
-
+        if (!catalog.productsModule.isDisplayed()) {
+            catalog.catalogModule.click();
+        }
     }
 
     @And("I click on components module")

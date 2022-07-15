@@ -1,4 +1,5 @@
 Feature: User sends customer report as email
+  @sendEmail
   Scenario: As a user I want to send customer report via email
     Given I am on the dashboard page
     When user clicks on reports module

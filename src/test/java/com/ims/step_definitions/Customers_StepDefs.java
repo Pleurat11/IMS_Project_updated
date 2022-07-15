@@ -31,13 +31,8 @@ public class Customers_StepDefs {
     }
     @Then("I should see the customers listed as a grid with the following columns:")
     public void i_should_see_the_customers_listed_as_a_grid_with_the_following_columns(List<String> expectedColumns) {
-        BrowserUtils.sleep(7);
+        BrowserUtils.sleep(3);
         Assert.assertEquals(expectedColumns, customersPage.actualColumns());
-    }
-
-    @Then("I should see the results paginated, {int} records at a time")
-    public void iShouldSeeTheResultsPaginatedRecordsAtATime(int nrOfRecords) {
-        Assert.assertEquals(nrOfRecords, customersPage.seeResults());
     }
 
     @And("I click on a random row")
@@ -56,12 +51,6 @@ public class Customers_StepDefs {
         customersPage.newBttn.click();
     }
 
-
-    @Then("the results should be blank")
-    public void theResultsShouldBeBlank() {
-        //TODO
-    }
-
     @When("I click on the customers module")
     public void iClickOnTheCustomersModule() {
         customersPage.customersModule.click();
@@ -76,5 +65,11 @@ public class Customers_StepDefs {
     public void theCustomersEditorShouldBeOpened() {
         wait.until(ExpectedConditions.visibilityOf(customersPage.deleteButton));
         Assert.assertTrue(customersPage.deleteButton.isDisplayed());
+    }
+
+    @Then("I should see customer results paginated {int} or more records at a time")
+    public void iShouldSeeCustomerResultsPaginatedOrMoreRecordsAtATime(int nrOfRecords) {
+        BrowserUtils.sleep(3);
+        Assert.assertTrue(nrOfRecords < customersPage.seeResults());
     }
 }

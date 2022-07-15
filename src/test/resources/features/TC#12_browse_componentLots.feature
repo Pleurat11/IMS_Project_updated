@@ -1,5 +1,5 @@
 @all
-@browseComponentInventory
+@browseComponentLots
 Feature: As a user I should be able to browse the component inventory
   @componentColumns
   Scenario: User wants to see components listed in a grid
@@ -7,20 +7,14 @@ Feature: As a user I should be able to browse the component inventory
     When I click on inventory module
     And I click on component lots module
     Then I should see the components listed as grid with the following columns:
-      |CUSTOMER|
-      |VENDOR  |
-      |PART #  |
-      |DESCRIPTION|
-      |QUANTITY   |
-      |LAST MODIFIED|
-      |LAST MODIFIED BY|
+      |CUSTOMER\nVENDOR\nPART #\nDESCRIPTION\nQUANTITY\nLAST MODIFIED\nLAST MODIFIED BY|
 
     @componentsInventoryPaginated
   Scenario: User wants to see the components results paginated
     Given I am on the dashboard page
     When I click on inventory module
     And I click on component lots module
-    Then I should be able to see the results paginated 50, records at a time
+    Then I should be able to see component lots results paginated 1 or more records at a time
 
       @checkboxInventory
     Scenario: User wants to filter for lots "acd" by checking a box

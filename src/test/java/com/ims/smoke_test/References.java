@@ -24,18 +24,21 @@ public class References extends BasePage {
 
         locationsModule.click();
 
-        newButton.click();
-        WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
-        locationField.sendKeys("Location Test");
+        for (int i = 0; i <40; i++) {
 
-        WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
 
-        descriptionField.sendKeys("Location Description");
+            newButton.click();
+            WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
+            locationField.sendKeys("Location P" + i);
 
-        saveButton.click();
-        BrowserUtils.sleep(3);
+            WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
+
+            descriptionField.sendKeys("This is an automated location");
+
+            saveButton.click();
+            BrowserUtils.sleep(3);
+        }
     }
-
     @Test
     public void vendorsTest(){
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
