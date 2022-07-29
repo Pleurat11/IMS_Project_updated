@@ -1,4 +1,4 @@
-
+@create
 Feature: User wants to allocate components to an assembly
   @allocation
   Scenario: As a user I want to be able to allocate components

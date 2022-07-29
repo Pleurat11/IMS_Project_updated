@@ -1,4 +1,4 @@
-
+@create
 Feature: User creates a new customer
   @createNewCustomer
   Scenario: As a user I want to be able to create a new Customer

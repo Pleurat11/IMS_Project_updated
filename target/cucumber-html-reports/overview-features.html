@@ -50,11 +50,11 @@ $(document).ready(function() {
     var chartData = {
         datasets: [{
             data: [
-                125,
+                123,
+                1,
+                1,
                 0,
-                0,
-                0,
-                1
+                0
             ],
             backgroundColor: [
                 "#00B000",
@@ -93,7 +93,7 @@ $(document).ready(function() {
                         var allData = data.datasets[tooltipItem.datasetIndex].data;
                         var tooltipLabel = data.labels[tooltipItem.index];
                         var tooltipData = allData[tooltipItem.index];
-                        var tooltipPercentage = Math.round(10000 * tooltipData / 126) / 100;
+                        var tooltipPercentage = Math.round(10000 * tooltipData / 125) / 100;
                         return tooltipLabel + ": " + tooltipData + " (" + tooltipPercentage + "%)";
                     }
                 }
@@ -230,7 +230,7 @@ $(document).ready(function() {
     <tr class="info">
       <td>IMS - AM BioMedical</td>
         <td>1</td>
-      <td>15 Jul 2022, 14:39</td>
+      <td>29 Jul 2022, 10:02</td>
     </tr>
   </tbody>
 </table>
@@ -338,7 +338,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">2</td>
 
-        <td class="duration" data-value="22040264000">22.040</td>
+        <td class="duration" data-value="22834983000">22.834</td>
         <td class="passed">Passed</td>
       </tr>
       <tr>
@@ -355,7 +355,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">4</td>
 
-        <td class="duration" data-value="24692434000">24.692</td>
+        <td class="duration" data-value="25400482000">25.400</td>
         <td class="passed">Passed</td>
       </tr>
       <tr>
@@ -372,7 +372,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">2</td>
 
-        <td class="duration" data-value="12428951000">12.428</td>
+        <td class="duration" data-value="12982196000">12.982</td>
         <td class="passed">Passed</td>
       </tr>
       <tr>
@@ -389,7 +389,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">4</td>
 
-        <td class="duration" data-value="14701702000">14.701</td>
+        <td class="duration" data-value="13591676000">13.591</td>
         <td class="passed">Passed</td>
       </tr>
       <tr>
@@ -406,7 +406,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">4</td>
 
-        <td class="duration" data-value="27834581000">27.834</td>
+        <td class="duration" data-value="28454099000">28.454</td>
         <td class="passed">Passed</td>
       </tr>
       <tr>
@@ -416,32 +416,32 @@ $(document).ready(function() {
         <td >0</td>
         <td >0</td>
         <td >0</td>
-        <td   class="undefined" >1</td>
+        <td >0</td>
+        <td class="total">17</td>
+
+        <td  class="passed"    >4</td>
+        <td >0</td>
+        <td class="total">4</td>
+
+        <td class="duration" data-value="17999558000">17.999</td>
+        <td class="passed">Passed</td>
+      </tr>
+      <tr>
+        <td class="tagname"><a href="report-feature_6_675696582.html">As a user I should be able to browse product catalog</a></td>
+
+        <td      class="passed"    >16</td>
+        <td      class="failed"    >1</td>
+        <td     class="skipped"   >1</td>
+        <td >0</td>
+        <td >0</td>
         <td class="total">18</td>
 
         <td  class="passed"    >3</td>
         <td  class="failed"    >1</td>
         <td class="total">4</td>
 
-        <td class="duration" data-value="17560597000">17.560</td>
+        <td class="duration" data-value="19944835000">19.944</td>
         <td class="failed">Failed</td>
-      </tr>
-      <tr>
-        <td class="tagname"><a href="report-feature_6_675696582.html">As a user I should be able to browse product catalog</a></td>
-
-        <td      class="passed"    >18</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td >0</td>
-        <td class="total">18</td>
-
-        <td  class="passed"    >4</td>
-        <td >0</td>
-        <td class="total">4</td>
-
-        <td class="duration" data-value="14731824000">14.731</td>
-        <td class="passed">Passed</td>
       </tr>
       <tr>
         <td class="tagname"><a href="report-feature_7_2722817682.html">As a user I should be able to browse component catalog</a></td>
@@ -457,7 +457,7 @@ $(document).ready(function() {
         <td >0</td>
         <td class="total">4</td>
 
-        <td class="duration" data-value="24735697000">24.735</td>
+        <td class="duration" data-value="25128931000">25.128</td>
         <td class="passed">Passed</td>
       </tr>
   </tbody>
@@ -465,27 +465,27 @@ $(document).ready(function() {
   <tfoot class="total">
     <tr>
       <td></td>
-      <td>125</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>123</td>
       <td>1</td>
-      <td>126</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>125</td>
 
       <td>27</td>
       <td>1</td>
       <td>28</td>
 
-      <td class="duration">2:38.726</td>
+      <td class="duration">2:46.336</td>
       <td>8</td>
     </tr>
     <tr>
       <td></td>
-      <td>99.21%</td>
+      <td>98.40%</td>
+      <td>0.80%</td>
+      <td>0.80%</td>
       <td>0.00%</td>
       <td>0.00%</td>
-      <td>0.00%</td>
-      <td>0.79%</td>
       <td></td>
       <td>96.43%</td>
       <td>3.57%</td>

@@ -49,8 +49,9 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnARow(){
-        WebElement row = JavascriptShadowRoot.jsShadowRoot("ipd-ims-product-browser-component", "tbody > tr");
-        row.click();
+        BrowserUtils.sleep(4);
+        List<WebElement> rows = JavascriptShadowRoot.jsShadowRootList("ipd-ims-product-browser-component", "tbody > tr");
+        rows.get(0).click();
 
     }
     public void existingProductData(){

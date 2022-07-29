@@ -1,4 +1,4 @@
-
+@create
 Feature: User creates a new Work Order
   @newWorkOrder
   Scenario: As a user I want to create a new work order

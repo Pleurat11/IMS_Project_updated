@@ -10,7 +10,7 @@ Feature: As a user I should be able to browse virtual locations
     Then I should see locations listed as grid, with the following columns:
     |LOCATION\nCUSTOMER\nREFRIGERATED\nUSED FOR\nLAST MODIFIED\nLAST MODIFIED BY|
 
-  @locationsResults
+  @filterLocations
   Scenario: User wants to see the results paginated
     Given I am on the dashboard page
     When I click on references module

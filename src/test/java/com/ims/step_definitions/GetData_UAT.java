@@ -1,8 +1,6 @@
 package com.ims.step_definitions;
 
-import com.ims.pages.BasePage;
-import com.ims.pages.LocationsPage;
-import com.ims.pages.LoginPage;
+import com.ims.pages.*;
 import com.ims.utilities.BrowserUtils;
 import com.ims.utilities.ConfigurationReader;
 import com.ims.utilities.Driver;
@@ -19,7 +17,7 @@ public class GetData_UAT extends BasePage {
         loginPage.loginPassword();
         BrowserUtils.sleep(2);
         locationsModule.click();
-        BrowserUtils.sleep(3);
+        BrowserUtils.sleep(8);
         locations.readLocationTable();
 
     }
@@ -30,7 +28,7 @@ public class GetData_UAT extends BasePage {
         loginPage.loginPassword();
         BrowserUtils.sleep(2);
         vendorsModule.click();
-        BrowserUtils.sleep(3);
+        BrowserUtils.sleep(8);
         locations.readLocationTable();
     }
 
@@ -55,5 +53,32 @@ public class GetData_UAT extends BasePage {
         componentsModule.click();
         BrowserUtils.sleep(3);
         locations.readLocationTable();
+    }
+
+    @Test
+    public void readComponentLots(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        loginPage.loginEmail();
+        loginPage.loginPassword();
+        BrowserUtils.sleep(2);
+        inventoryModule.click();
+        componentLots.click();
+        BrowserUtils.sleep(2);
+        ComponentLotsPage cplpg = new ComponentLotsPage();
+        BrowserUtils.sleep(7);
+        cplpg.readdComponentLots();
+    }
+
+    @Test
+    public void readAssembliesData(){
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+        loginPage.loginEmail();
+        loginPage.loginPassword();
+        BrowserUtils.sleep(4);
+        inventoryModule.click();
+        assembliesModule.click();
+        BrowserUtils.sleep(7);
+        AssembliesPage assembliesPage = new AssembliesPage();
+        assembliesPage.readAssemblies();
     }
 }

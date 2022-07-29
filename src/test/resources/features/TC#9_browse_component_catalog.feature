@@ -8,9 +8,10 @@ Feature: As a user I should be able to browse component catalog
     When I click on catalogs module
     And I click on components module
     Then I should see the components listed as grid, with the following columns:
-    |COMPONENT|
+    |NAME|
     |CUSTOMER|
     |VENDOR|
+    |REVISION|
     |PART #|
     |LAST MODIFIED|
     |LAST MODIFIED BY|

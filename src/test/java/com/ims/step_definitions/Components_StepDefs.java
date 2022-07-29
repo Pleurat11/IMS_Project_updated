@@ -23,7 +23,7 @@ public class Components_StepDefs {
     @Then("I should see the components listed as grid, with the following columns:")
     public void i_should_see_the_components_listed_as_grid_with_the_following_columns(List<String> expectedColumns) {
         BrowserUtils.sleep(3);
-        Assert.assertEquals(componentsPage.actualColumns(), expectedColumns);
+        Assert.assertEquals(expectedColumns, componentsPage.actualColumns());
     }
 
     public void iClickOnCatalogsModule() {

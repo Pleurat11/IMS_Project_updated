@@ -1,3 +1,4 @@
+@create
 Feature: User creates a new vendor
   @createNewVendor
   Scenario: As a user I want to be able to create a new vendor

@@ -1,6 +1,5 @@
 @all
 @browseProductCatalog
-  @catalog
 Feature: As a user I should be able to browse product catalog
   @productColumns
   Scenario: User wants to see products listed in a grid
@@ -9,10 +8,9 @@ Feature: As a user I should be able to browse product catalog
     And I click on product module
     Then I should see the products listed as grid with the following columns:
       |PRODUCT|
-      |CUSTOMER|
+      |PART NUMBER|
+      |REVISION|
       |DESCRIPTION|
-      |LAST MODIFIED|
-      |LAST MODIFIED BY|
 
     @productsPaginated
   Scenario: User wants to see the products results paginated

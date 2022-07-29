@@ -1,4 +1,4 @@
-
+@create
 Feature: User creates a new shipment
   @newShipment
   Scenario: As a user I want to create a new shipment

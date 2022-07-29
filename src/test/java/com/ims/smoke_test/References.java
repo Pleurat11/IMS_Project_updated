@@ -13,28 +13,33 @@ import java.util.List;
 
 public class References extends BasePage {
 
+    LoginPage loginPage = new LoginPage();
     @Test
     public void locationsTest() {
-//        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-//
+        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
+
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 
-//        loginPage.loginEmail();
-//        loginPage.loginPassword();
+        loginPage.loginEmail();
+        loginPage.loginPassword();
 
         locationsModule.click();
 
         for (int i = 0; i <40; i++) {
 
+            BrowserUtils.sleep(2);
 
             newButton.click();
+
+            BrowserUtils.sleep(2);
             WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
             locationField.sendKeys("Location P" + i);
 
             WebElement descriptionField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "textarea");
+            BrowserUtils.sleep(1);
+            descriptionField.sendKeys("This is location description");
 
-            descriptionField.sendKeys("This is an automated location");
-
+            BrowserUtils.sleep(1);
             saveButton.click();
             BrowserUtils.sleep(3);
         }

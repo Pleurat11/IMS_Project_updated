@@ -28,6 +28,9 @@ public class LocationsPage extends BasePage {
     @FindBy(xpath = "//a[@class='dropdown-item']")
     public List<WebElement> dropdownList;
 
+    @FindBy(id = "Dropdown11292-option")
+    public WebElement dropdown;
+
     @FindBy(xpath = "ipd-ims-location-editor-component")
     public WebElement shadowRoot;
 
@@ -48,14 +51,15 @@ public class LocationsPage extends BasePage {
     }
 
     public void readLocationTable(){
-        List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-browser-component", "tbody > tr");
+        List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "tbody > tr");
         List<String> newList = new ArrayList<>();
 
         for (int i = 0; i < locationsList.size(); i++) {
-            newList.add(locationsList.get(i).getText());
+            newList.add(locationsList.get(i).getText() + "\n");
         }
 
 
+        dropdown.click();
         System.out.println(newList);
     }
 
@@ -75,8 +79,8 @@ public class LocationsPage extends BasePage {
     }
 
     public void clickOnARow() {
-        BrowserUtils.sleep(6);
-        List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "table > tbody > tr");
+        BrowserUtils.sleep(4);
+        List<WebElement> locationsList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-location-browser-component", "tbody > tr");
         try {
             locationsList.get(1).click();
         }

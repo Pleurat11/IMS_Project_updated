@@ -1,3 +1,4 @@
+@create
 Feature: User adds new assembly lot
   @assemblyLot
   Scenario: As a user I want to be able to create a new assembly lot

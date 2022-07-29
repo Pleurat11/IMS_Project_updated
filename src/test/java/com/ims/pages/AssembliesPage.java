@@ -92,12 +92,21 @@ public class AssembliesPage extends BasePage{
 
     public void clickOnARow() {
         BrowserUtils.sleep(6);
-        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-assembly-browser-component", "table > tbody > tr");
+        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-assembly-browser-component", "tbody > tr");
         try {
             customersList.get(1).click();
         }
         catch (StaleElementReferenceException e){
             e.printStackTrace();
+        }
+    }
+
+    public void readAssemblies(){
+        BrowserUtils.sleep(6);
+        List<WebElement> customersList = JavascriptShadowRoot.jsShadowRootList("ipd-ims-assembly-browser-component", "table > tbody > tr");
+
+        for (int i = 0; i <customersList.size(); i++) {
+            System.out.println(customersList.get(i).getText());
         }
     }
 }

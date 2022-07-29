@@ -1,9 +1,6 @@
 package com.ims.pages;
 
-import com.ims.utilities.ConfigurationReader;
-import com.ims.utilities.Driver;
-import com.ims.utilities.JavascriptShadowRoot;
-import com.ims.utilities.SearchContextShadowRoot;
+import com.ims.utilities.*;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -30,8 +27,9 @@ public class CustomerReportsPage extends BasePage{
 
     public void createCustomerButton(){
 
-        List<WebElement> createReportButton = JavascriptShadowRoot.jsShadowRootList("ipd-ims-report-browser-component", "button");
-        createReportButton.get(50).click();
+        WebElement createReportButton = JavascriptShadowRoot.jsShadowRoot("ipd-ims-report-browser-component", "div.position-relative.h-100 > div.h-100 > div.container > div.container > div.row");
+        BrowserUtils.sleep(4);
+        createReportButton.click();
     }
 
     public void verifyReportCreated(){

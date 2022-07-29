@@ -1,11 +1,15 @@
 package com.ims.pages;
 
 import com.ims.utilities.BrowserUtils;
+import com.ims.utilities.Driver;
 import com.ims.utilities.JavascriptShadowRoot;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +43,14 @@ public class ComponentLotsPage extends BasePage {
         }
         catch (StaleElementReferenceException e){
             e.printStackTrace();
+        }
+    }
+
+    public void readdComponentLots(){
+        List<WebElement> actualColumns = JavascriptShadowRoot.jsShadowRootList("ipd-ims-component-lot-browser-component", "tbody > tr");
+
+        for (int i = 0; i <actualColumns.size(); i++) {
+            System.out.println(actualColumns.get(i).getText() + "\n");
         }
     }
 }

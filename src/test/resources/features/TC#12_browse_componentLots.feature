@@ -7,7 +7,7 @@ Feature: As a user I should be able to browse the component inventory
     When I click on inventory module
     And I click on component lots module
     Then I should see the components listed as grid with the following columns:
-      |CUSTOMER\nVENDOR\nPART #\nDESCRIPTION\nQUANTITY\nLAST MODIFIED\nLAST MODIFIED BY|
+      |NAME\nPART #\nREVISION\nQUANTITY\nRECEIVING NUMBER\nLOT #\nDESCRIPTION|
 
     @componentsInventoryPaginated
   Scenario: User wants to see the components results paginated

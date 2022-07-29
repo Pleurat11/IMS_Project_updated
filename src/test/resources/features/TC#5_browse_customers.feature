@@ -26,7 +26,7 @@ Feature: As a user I should be able to browse customers
       When I click on references module
       And I click on the customers module
       And I click on the new button
-      Then the results should be blank
+#      Then the results should be blank
 
       @customerEditor
       Scenario: User wants to open the customers editor

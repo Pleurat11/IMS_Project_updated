@@ -1,3 +1,4 @@
+@create
 Feature: User creates a new report
   @report
   Scenario: As a user I want to create a new customer report

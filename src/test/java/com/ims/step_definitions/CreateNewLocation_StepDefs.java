@@ -26,7 +26,12 @@ public class CreateNewLocation_StepDefs {
     }
     @And("I click on the Save button")
     public void click_on_the_save_button(){
-        BrowserUtils.sleep(2);
+
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        if (!locations.saveButton.isEnabled()){
+            Driver.getDriver().navigate().refresh();
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(locations.saveButton));
         locations.saveButton.click();
     }
 
@@ -38,4 +43,11 @@ public class CreateNewLocation_StepDefs {
         Assert.assertTrue(locations.toastMessageSuccess.isDisplayed());
     }
 
+    @And("I send {string} to the field")
+    public void iSendToTheField(String locationNames) {
+        BrowserUtils.sleep(4);
+        WebElement locationField = JavascriptShadowRoot.jsShadowRoot("ipd-ims-location-editor-component", "input");
+        locationField.sendKeys(locationNames);
+        BrowserUtils.sleep(5);
+    }
 }

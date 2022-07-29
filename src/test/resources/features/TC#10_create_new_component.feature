@@ -1,3 +1,4 @@
+@create
 Feature: User creates a new component
   @createComponent
   Scenario: As a user I want to be able to create a new component
